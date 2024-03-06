@@ -1,5 +1,12 @@
-#let project(
-  title: "A",
+// 文本和代码的字体
+#let songti = "SimSun"
+#let heiti = "SimHei"
+#let kaiti = "SimKai"
+#let text_font = "Times New Roman"
+#let code_font = "DejaVu Sans Mono"
+
+#let cover(
+  title: "全国大学生数学建模竞赛 Typst 模板",
   problem_chosen: "A",
   team_number: "1234",
   college_name: " ",
@@ -10,80 +17,11 @@
   ),
   advisor: " ",
   date: none,
-
-  header_display: true,
-
   body,
+
 ) = {
-
-  // 文本和代码的字体
-  let text_font = "Times New Roman"
-  let songti = "SimSun"
-  let heiti = "SimHei"
-  let kaiti = "SimKai"
-  let noto_serif_font = "Noto Serif CJK SC"
-  let code_font = "DejaVu Sans Mono"
-
-  let 字号 = (
-    四号: 14pt, 小四: 12pt,
-  )
-
-  // 设置正文和代码的字体
-  set text(font: (text_font, songti), size: 12pt, lang: "zh", region: "cn")
-  show strong: set text(font: (text_font, noto_serif_font), size: 11.3pt)
-  show emph: set text(font: (text_font, noto_serif_font), size: 11.3pt)
-  show raw: set text(font: code_font, 10pt)
-
-  // 设置文档元数据和参考文献格式
-  set document(title: title)
-  set bibliography(style: "gb-7714-2015-numeric")
-
-  // 设置页面
-  set page(
-    paper: "a4",
-    margin: (top: 2.5cm, bottom: 2.5cm, left: 2.5cm, right: 2.5cm),
-
-    footer: locate(loc =>{
-      if loc.page() == 1 or loc.page() == 2 {return}
-      [
-        #align(center)[#counter(page).display("1")]
-      ]
-    })
-  )
-
-  //设置标题
-  set heading(numbering: "1.1 ")
-
-  show heading: it => box(width: 100%)[
-    #v(0.50em)
-    #set text(font: noto_serif_font, weight: "bold")
-    #if it.numbering != none { counter(heading).display() }
-    #it.body
-  ]
-
-  show heading.where(
-    level: 1
-  ): it => box(width: 100%)[
-    #v(0.5em)
-    #set align(center)
-    #set heading(numbering: "一、")
-    #it
-    #v(0.75em)
-  ]
-
-  // 配置公式的编号和间距
-  set math.equation(numbering: "(1.1)")
-  show math.equation: eq => {
-    set block(spacing: 0.65em)
-    eq
-  }
-
-  // Main body
-  set par(first-line-indent: 2em)
-
   let fieldvalue(value) = [
     #set align(center + horizon)
-    #set text(size: 字号.小四)
     #grid(
       rows: (auto, auto),
       row-gutter: 0.2em,
@@ -98,8 +36,8 @@
   align(center)[#line(length: 100%, stroke: (thickness: 1pt, dash: "solid"))]
 
   align(center)[
-    #strong(text(size: 15pt, font: heiti)[2023年高教社杯全国大学生数学建模竞赛]) \ \
-    #strong(text(size: 16pt, font: songti)[承 诺 书])
+    #text(size: 15pt, font: heiti, stroke: 0.2pt)[2023年高教社杯全国大学生数学建模竞赛] \ \
+    #text(size: 16pt, font: songti, stroke: 0.2pt)[承  诺  书]
     #v(10pt)
   ]
   
@@ -111,7 +49,7 @@
 
   parbreak()
 
-  strong(text[我们以中国大学生名誉和诚信郑重承诺，严格遵守竞赛章程和参赛规则，以保证竞赛的公正、公平性。如有违反竞赛章程和参赛规则的行为，我们将受到严肃处理。])
+  text[*我们以中国大学生名誉和诚信郑重承诺，严格遵守竞赛章程和参赛规则，以保证竞赛的公正、公平性。如有违反竞赛章程和参赛规则的行为，我们将受到严肃处理。*]
 
   parbreak()
 
@@ -188,9 +126,9 @@
   ]
 
   align(center)[
-    #strong(text(size: 15pt, font: heiti)[2023年高教社杯全国大学生数学建模竞赛]) 
+    #text(size: 15pt, font: heiti, stroke: 0.2pt)[2023年高教社杯全国大学生数学建模竞赛]
     #v(10pt)
-    #strong(text(size: 16pt, font: songti)[编 号 专 用 页])
+    #text(size: 16pt, font: songti, stroke: 0.3pt)[编 号 专 用 页]
   ]
 
   block(width: 100%)[
@@ -215,10 +153,116 @@
 
   v(125pt)
   strong(text(font: kaiti)[（请勿改动此页内容和格式。此承诺书打印签名后作为纸质论文的封面，注意电子版论文中不得出现此页。以上内容请仔细核对，如填写错误，论文可能被取消评奖资格。）])
-  
-  pagebreak()
 
   body
+}
 
 
+
+#let project(
+  title: "全国大学生数学建模竞赛 Typst 模板",
+  problem_chosen: "A",
+  team_number: "1234",
+  college_name: " ",
+  member: (
+    first: " ",
+    second: " ",
+    third: " ",
+  ),
+  advisor: " ",
+  date: none,
+  cover_display: false,
+
+  abstract: [],
+  keywords: (),
+
+  body,
+) = {
+
+  // 设置正文和代码的字体
+  set text(font: (text_font, songti), stroke: 0pt, size: 12pt, lang: "zh", region: "cn")
+  show strong: set text(font: (text_font, songti), stroke: 0.5pt, size: 12pt)
+  show emph: set text(font: (text_font, songti), size: 12pt)
+  show raw: set text(font: code_font, 10pt)
+
+  // 设置文档元数据和参考文献格式
+  set document(title: title)
+  set bibliography(style: "gb-7714-2015-numeric")
+
+  //设置标题
+  set heading(numbering: "1.1 ")
+
+  show heading: it => box(width: 100%)[
+    #v(0.50em)
+    #set text(font: heiti, stroke: 0.2pt)
+    #if it.numbering != none { counter(heading).display() }
+    #it.body
+  ]
+
+  show heading.where(
+    level: 1
+  ): it => box(width: 100%)[
+    #v(0.5em)
+    #set align(center)
+    #set heading(numbering: "一、")
+    #it
+    #v(0.75em)
+  ]
+
+  // 配置公式的编号和间距
+  set math.equation(numbering: "(1.1)")
+  show math.equation: eq => {
+    set block(spacing: 0.65em)
+    eq
+  }
+
+  // Main body
+  set par(
+    first-line-indent: 2em,
+    linebreaks: "optimized",
+  )
+
+  // cover
+  if cover_display == true [
+    #show: cover.with(
+      title: title,
+      problem_chosen: problem_chosen,
+      team_number: team_number,
+      college_name: college_name,
+      member: (
+        first: member.first,
+        second: member.second,
+        third: member.third,
+      ),
+      advisor: advisor,
+      date: date,
+    )
+
+    #counter(page).update(0)
+  ]
+
+  // 设置页面
+  set page(
+    paper: "a4",
+    margin: (top: 2.5cm, bottom: 2.5cm, left: 2.5cm, right: 2.5cm),
+
+    footer: align(center)[#counter(page).display("1")]
+  )
+
+  // abstract
+
+  align(center)[
+    #text(font: heiti, size: 18pt, stroke: 0.2pt)[全国大学生数学建模竞赛 Typst 模板 \ \ ]
+    #text(font: heiti, size: 16pt, stroke: 0.2pt)[摘 要]
+  ]
+
+  abstract
+
+  if keywords != () [
+    #v(5pt)
+    #text("关键字：", font: heiti, stroke: 0.3pt)
+    #keywords.join(", ")
+  ]
+
+  body
 }
