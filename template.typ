@@ -20,63 +20,52 @@
   body,
 
 ) = {
+
+  // cover
+  text(size: 14pt)[赛区评阅编号（由赛区组委会填写）：]
+  v(-8pt)
+  align(left)[#line(length: 96%, stroke: (thickness: 0.8pt, dash: "solid"))]
+
+  align(center)[
+    #text(size: 15pt, font: heiti, stroke: 0.4pt)[2023年高教社杯全国大学生数学建模竞赛] \ \
+    #text(size: 16pt, font: songti, stroke: 0.45pt)[承#h(16pt)诺#h(16pt)书]
+    #v(8pt)
+  ]
+
+  par(leading: 13pt)[我们仔细阅读了《全国大学生数学建模竞赛章程》和《全国大学生数学建模竞赛参赛规则》（以下简称 “竞赛章程和参赛规则”，可从http://www.mcm.edu.cn下载）。\ #v(-1pt) 我们完全清楚，在竞赛开始后参赛队员不能以任何方式，包括电话、电子邮件、“贴吧”、QQ群、微信群等，与队外的任何人（包括指导教师）交流、讨论与赛题有关的问题；无论主动参与讨论还是被动接收讨论信息都是严重违反竞赛纪律的行为。\ #v(-1pt) *我们以中国大学生名誉和诚信郑重承诺，严格遵守竞赛章程和参赛规则，以保证竞赛的公正、公平性。如有违反竞赛章程和参赛规则的行为，我们将受到严肃处理。* \ #v(-1pt) 我们授权全国大学生数学建模竞赛组委会，可将我们的论文以任何形式进行公开展示（包括进行网上公示，在书籍、期刊和其他媒体进行正式或非正式发表等）。]
+
+  parbreak()
+  v(15pt)
+
   let fieldvalue(value) = [
     #set align(center + horizon)
     #grid(
       rows: (auto, auto),
       row-gutter: 0.2em,
       value,
-      line(length: 100%, stroke: 0.5pt)
+      line(length: 100%, stroke: 0.6pt)
     )
   ]
-
-  // cover
-  text(size: 14pt)[赛区评阅编号（由赛区组委会填写）：]
-  v(-8pt)
-  align(center)[#line(length: 100%, stroke: (thickness: 1pt, dash: "solid"))]
-
-  align(center)[
-    #text(size: 15pt, font: heiti, stroke: 0.2pt)[2023年高教社杯全国大学生数学建模竞赛] \ \
-    #text(size: 16pt, font: songti, stroke: 0.2pt)[承  诺  书]
-    #v(10pt)
-  ]
-  
-  text[我们仔细阅读了《全国大学生数学建模竞赛章程》和《全国大学生数学建模竞赛参赛规则》（以下简称 “竞赛章程和参赛规则”，可从http://www.mcm.edu.cn下载）。] 
-
-  parbreak()
-
-  text[我们完全清楚，在竞赛开始后参赛队员不能以任何方式，包括电话、电子邮件、“贴吧”、QQ群、微信群等，与队外的任何人（包括指导教师）交流、讨论与赛题有关的问题；无论主动参与讨论还是被动接收讨论信息都是严重违反竞赛纪律的行为。]
-
-  parbreak()
-
-  text[*我们以中国大学生名誉和诚信郑重承诺，严格遵守竞赛章程和参赛规则，以保证竞赛的公正、公平性。如有违反竞赛章程和参赛规则的行为，我们将受到严肃处理。*]
-
-  parbreak()
-
-  text[我们授权全国大学生数学建模竞赛组委会，可将我们的论文以任何形式进行公开展示（包括进行网上公示，在书籍、期刊和其他媒体进行正式或非正式发表等）。] 
-
-  parbreak()
-  v(15pt)
 
   block(width: 100%)[
     #grid(
       columns: (315pt, auto),
       text[#h(2em)我们参赛选择的题号（从A/B/C/D/E中选择一项填写）：],
       fieldvalue(problem_chosen),
-    )
+    )#v(-2pt)
     #grid(
       columns: (285pt, auto),
       text[#h(2em)我们的报名参赛队号（12位数字全国统一编号）：],
       fieldvalue(team_number)
-    )
+    )#v(-2pt)
     #grid(
       columns: (255pt, auto),
       text[#h(2em)参赛学校（完整的学校全称，不含院系名）：],
       fieldvalue(college_name)
     )
-    #v(15pt)
+    #v(10pt)
     #grid(
-      columns: (175pt, auto),
+      columns: (172pt, auto),
       row-gutter: 2em,
       text[#h(2em)参赛队员 (打印并签名) ：1.],
       fieldvalue(member.first),
@@ -85,15 +74,16 @@
       text[#h(1fr)3.#h(0.6em)],
       fieldvalue(member.third),
     )
+    #v(8pt)
     #grid(
-      columns: (265pt, auto),
-      text[#h(2em)指导教师或指导教师组负责人  (打印并签名)：],
+      columns: (272pt, auto),
+      text[#h(2em)指导教师或指导教师组负责人#h(10pt) (打印并签名)：],
       fieldvalue(advisor)
     )
 
     #text(font: kaiti)[#h(2em)（指导教师签名意味着对参赛队的行为和论文的真实性负责） ]
-    #v(10pt)
 
+    #v(8pt)
     #align(right)[#grid(
       columns: (auto, 55pt, auto, 25pt, auto, 25pt, auto),
       column-gutter: 2pt,
@@ -107,11 +97,12 @@
     )]
   ]
 
-  v(10pt)
+  v(8pt)
   strong(text(font: kaiti)[（请勿改动此页内容和格式。此承诺书打印签名后作为纸质论文的封面，注意电子版论文中不得出现此页。以上内容请仔细核对，如填写错误，论文可能被取消评奖资格。）])
 
   pagebreak()
 
+  v(25pt)
   block()[
     #set align(center)
     #grid(
@@ -124,34 +115,33 @@
     #v(10pt)
     #line(length: 100%, stroke: (thickness: 1.5pt, dash: "solid"))
   ]
-
+  v(4pt)
   align(center)[
-    #text(size: 15pt, font: heiti, stroke: 0.2pt)[2023年高教社杯全国大学生数学建模竞赛]
-    #v(10pt)
-    #text(size: 16pt, font: songti, stroke: 0.3pt)[编 号 专 用 页]
+    #text(size: 15pt, font: heiti, stroke: 0.4pt)[2023年高教社杯全国大学生数学建模竞赛]
+    #v(6pt)
+    #text(size: 16pt, font: songti, stroke: 0.45pt)[编 号 专 用 页]
   ]
 
   block(width: 100%)[
-    #v(30pt)
+    #v(32pt)
     #set text(size: 14pt)
-    #text[#h(4em)赛区评阅记录（可供赛区评阅时使用）：]
-    #v(-10pt)
+    #text[#h(48pt)赛区评阅记录（可供赛区评阅时使用）：]
+    #v(-14pt)
 
     #align(center)[#table(
-      columns: (40pt, 55pt, 55pt, 55pt, 55pt, 55pt, 55pt),
-      stroke: 0.75pt,
-      inset: (y: 14pt),
-      text[评 \ 阅 \ 人], "", "", "", "", "", "",
-      text[备 \ 注]
+      columns: (40pt, 56pt, 56pt, 56pt, 56pt, 56pt, 56pt),
+      stroke: 0.5pt,
+      inset: (y: 18pt),
+      par(leading: 4pt)[评 \ 阅 \ 人], "", "", "", "", "", "",
+      par(leading: 4pt)[备 \ 注]
     )]
 
-    #v(75pt)
-    #text[#h(3em)送全国评阅统一编号: ] \
-    #text[#h(3em)（赛区组委会填写）]
+    #v(50pt)
+    #par(leading: 4pt)[#h(3em)送全国评阅统一编号: \ #h(3em)（赛区组委会填写）]
 
   ]
 
-  v(125pt)
+  v(138pt)
   strong(text(font: kaiti)[（请勿改动此页内容和格式。此承诺书打印签名后作为纸质论文的封面，注意电子版论文中不得出现此页。以上内容请仔细核对，如填写错误，论文可能被取消评奖资格。）])
 
   body
@@ -181,7 +171,7 @@
 
   // 设置正文和代码的字体
   set text(font: (text_font, songti), stroke: 0pt, size: 12pt, lang: "zh", region: "cn")
-  show strong: set text(font: (text_font, songti), stroke: 0.5pt, size: 12pt)
+  show strong: set text(font: (text_font, songti), stroke: 0.4pt, size: 12pt)
   show emph: set text(font: (text_font, songti), size: 12pt)
   show raw: set text(font: code_font, 10pt)
 
@@ -220,6 +210,7 @@
   set par(
     first-line-indent: 2em,
     linebreaks: "optimized",
+    justify: true
   )
 
   // cover
