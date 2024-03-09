@@ -1,3 +1,8 @@
+#import "@preview/codelst:2.0.0": sourcecode, codelst
+#import "@preview/tablex:0.0.8": tablex, hlinex, vlinex, colspanx, rowspanx
+#import "@preview/ctheorems:1.1.2": *
+//#import "@preview/mitex:0.2.1": *
+
 // 文本和代码的字体
 #let songti = "SimSun"
 #let heiti = "SimHei"
@@ -11,9 +16,9 @@
   team_number: "1234",
   college_name: " ",
   member: (
-    first: " ",
-    second: " ",
-    third: " ",
+    A: " ",
+    B: " ",
+    C: " ",
   ),
   advisor: " ",
   date: none,
@@ -27,11 +32,13 @@
   align(left)[#line(length: 96%, stroke: (thickness: 0.8pt, dash: "solid"))]
 
   align(center)[
-    #text(size: 15pt, font: heiti, stroke: 0.4pt)[2023年高教社杯全国大学生数学建模竞赛] \ \
-    #text(size: 16pt, font: songti, stroke: 0.45pt)[承#h(16pt)诺#h(16pt)书]
+    #text(size: 15pt, font: heiti, stroke: 0.35pt)[2023年高教社杯全国大学生数学建模竞赛] \ \
+    #text(size: 16pt, font: songti, stroke: 0.4pt)[承#h(16pt)诺#h(16pt)书]
     #v(8pt)
   ]
 
+  show strong: set text(font: (text_font, songti), stroke: 0.4pt, size: 12pt)
+  
   par(leading: 13pt)[我们仔细阅读了《全国大学生数学建模竞赛章程》和《全国大学生数学建模竞赛参赛规则》（以下简称 “竞赛章程和参赛规则”，可从http://www.mcm.edu.cn下载）。\ #v(-1pt) 我们完全清楚，在竞赛开始后参赛队员不能以任何方式，包括电话、电子邮件、“贴吧”、QQ群、微信群等，与队外的任何人（包括指导教师）交流、讨论与赛题有关的问题；无论主动参与讨论还是被动接收讨论信息都是严重违反竞赛纪律的行为。\ #v(-1pt) *我们以中国大学生名誉和诚信郑重承诺，严格遵守竞赛章程和参赛规则，以保证竞赛的公正、公平性。如有违反竞赛章程和参赛规则的行为，我们将受到严肃处理。* \ #v(-1pt) 我们授权全国大学生数学建模竞赛组委会，可将我们的论文以任何形式进行公开展示（包括进行网上公示，在书籍、期刊和其他媒体进行正式或非正式发表等）。]
 
   parbreak()
@@ -68,11 +75,11 @@
       columns: (172pt, auto),
       row-gutter: 2em,
       text[#h(2em)参赛队员 (打印并签名) ：1.],
-      fieldvalue(member.first),
+      fieldvalue(member.A),
       text[#h(1fr)2.#h(0.6em)],
-      fieldvalue(member.second),
+      fieldvalue(member.B),
       text[#h(1fr)3.#h(0.6em)],
-      fieldvalue(member.third),
+      fieldvalue(member.C),
     )
     #v(8pt)
     #grid(
@@ -98,7 +105,7 @@
   ]
 
   v(8pt)
-  strong(text(font: kaiti)[（请勿改动此页内容和格式。此承诺书打印签名后作为纸质论文的封面，注意电子版论文中不得出现此页。以上内容请仔细核对，如填写错误，论文可能被取消评奖资格。）])
+  text(font: kaiti, stroke: 0.35pt)[（请勿改动此页内容和格式。此承诺书打印签名后作为纸质论文的封面，注意电子版论文中不得出现此页。以上内容请仔细核对，如填写错误，论文可能被取消评奖资格。）]
 
   pagebreak()
 
@@ -106,10 +113,11 @@
   block()[
     #set align(center)
     #grid(
-      columns: (100pt, 130pt, 100pt, 125pt),
-      text[赛区评阅编号：（由赛区填写）],
+      columns: (100pt, 115pt, 115pt, 115pt),
+      column-gutter: 2pt,
+      text(size: 14pt)[赛区评阅编号：\ （由赛区填写）],
       fieldvalue(v(30pt)),
-      text[全国评阅编号：（全国组委会填写）],
+      text(size: 14pt)[全国评阅编号：\ （全国组委会填写）],
       fieldvalue(v(30pt)),
     )
     #v(10pt)
@@ -117,9 +125,9 @@
   ]
   v(4pt)
   align(center)[
-    #text(size: 15pt, font: heiti, stroke: 0.4pt)[2023年高教社杯全国大学生数学建模竞赛]
+    #text(size: 15pt, font: heiti, stroke: 0.35pt)[2023年高教社杯全国大学生数学建模竞赛]
     #v(6pt)
-    #text(size: 16pt, font: songti, stroke: 0.45pt)[编 号 专 用 页]
+    #text(size: 16pt, font: songti, stroke: 0.4pt)[编 号 专 用 页]
   ]
 
   block(width: 100%)[
@@ -142,7 +150,7 @@
   ]
 
   v(138pt)
-  strong(text(font: kaiti)[（请勿改动此页内容和格式。此承诺书打印签名后作为纸质论文的封面，注意电子版论文中不得出现此页。以上内容请仔细核对，如填写错误，论文可能被取消评奖资格。）])
+  text(font: kaiti, stroke: 0.35pt)[（请勿改动此页内容和格式。此编号专用页仅供赛区和全国评阅使用，参赛队打印后装订到纸质论文的第二页上。注意电子版论文中不得出现此页。）]
 
   body
 }
@@ -170,33 +178,39 @@
 ) = {
 
   // 设置正文和代码的字体
-  set text(font: (text_font, songti), stroke: 0pt, size: 12pt, lang: "zh", region: "cn")
-  show strong: set text(font: (text_font, songti), stroke: 0.4pt, size: 12pt)
-  show emph: set text(font: (text_font, songti), size: 12pt)
-  show raw: set text(font: code_font, 10pt)
+  set text(font: (text_font, songti), size: 12pt, lang: "zh", region: "cn")
+  show strong: set text(font: (text_font, heiti))
+  show emph: set text(font: text_font)
+  show raw: set text(font: code_font, 8pt)
 
   // 设置文档元数据和参考文献格式
   set document(title: title)
-  set bibliography(style: "gb-7714-2015-numeric")
 
   //设置标题
   set heading(numbering: "1.1 ")
 
   show heading: it => box(width: 100%)[
-    #v(0.50em)
-    #set text(font: heiti, stroke: 0.2pt)
+    #set text(font: (text_font, heiti))
     #if it.numbering != none { counter(heading).display() }
     #it.body
+    #v(8pt)
   ]
 
   show heading.where(
     level: 1
   ): it => box(width: 100%)[
-    #v(0.5em)
-    #set align(center)
+    #set text(size: 15pt)
     #set heading(numbering: "一、")
+    #set align(center)
+    #v(4pt)
     #it
-    #v(0.75em)
+  ]
+
+  show heading.where(
+    level: 2
+  ): it => box(width: 100%)[
+    #set text(size: 13pt)
+    #it
   ]
 
   // 配置公式的编号和间距
@@ -206,14 +220,41 @@
     eq
   }
 
-  // Main body
+  // 配置行内代码块、行间代码块
+  show raw.where(block: false): it => box(fill: luma(240), inset: (x: 2pt), outset: (y: 3pt), radius: 1pt)[#text(size: 10pt)[#it]]
+
+  show raw.where(block: true): it => block(width: 100%, fill: luma(240), inset: 10pt, radius: 3pt, stroke: 0.1pt, breakable: true)[#it]
+
+  show: codelst(reversed: true)
+
+  show figure: it => [
+    #v(4pt)
+    #it
+    #v(4pt)
+  ]
+
+  show figure.where(
+    kind: raw
+  ): it => {
+    set block(width: 100%, breakable: true)
+    it
+  }
+  
+  // 段落配置
   set par(
     first-line-indent: 2em,
     linebreaks: "optimized",
     justify: true
   )
 
-  // cover
+  // 配置列表
+  set list(tight: false, indent: 1em, marker: ([•], [◦], [•], [◦]))
+  show list: set text(top-edge: "ascender")
+
+  set enum(tight: false, indent: 1em)
+  show enum: set text(top-edge: "ascender")
+
+  // 封面显示
   if cover_display == true [
     #show: cover.with(
       title: title,
@@ -221,9 +262,9 @@
       team_number: team_number,
       college_name: college_name,
       member: (
-        first: member.first,
-        second: member.second,
-        third: member.third,
+        A: member.A,
+        B: member.B,
+        C: member.C,
       ),
       advisor: advisor,
       date: date,
@@ -236,24 +277,95 @@
   set page(
     paper: "a4",
     margin: (top: 2.5cm, bottom: 2.5cm, left: 2.5cm, right: 2.5cm),
-
-    footer: align(center)[#counter(page).display("1")]
+    footer: align(center)[#text(counter(page).display("1"), font: songti, size: 12pt)]
   )
 
-  // abstract
-
+  // 摘要
   align(center)[
-    #text(font: heiti, size: 18pt, stroke: 0.2pt)[全国大学生数学建模竞赛 Typst 模板 \ \ ]
-    #text(font: heiti, size: 16pt, stroke: 0.2pt)[摘 要]
+    #text(size: 16pt)[*全国大学生数学建模竞赛 Typst 模板* \ ] #v(2pt)
+    #text(size: 14pt)[*摘 要*]
   ]
 
   abstract
 
   if keywords != () [
     #v(5pt)
-    #text("关键字：", font: heiti, stroke: 0.3pt)
-    #keywords.join(", ")
+    #h(-2em)#text("关键字：", font: heiti, stroke: 0.25pt)
+    #keywords.join(h(1em))
   ]
+
+  pagebreak()
 
   body
 }
+
+#let bib(bibliography_file) = {
+    parbreak()
+    show bibliography: set text(10.5pt)
+    bibliography(bibliography_file, title: "参考文献", style: "gb-7714-2015-numeric")
+    v(12pt)
+}
+
+// 定理环境
+
+#let envbox = thmbox.with(
+  base: none,
+  inset: 0pt,
+  breakable: true,
+  padding: (top: 0em, bottom: 0em),
+)
+
+#let definition = envbox(
+  "definition",
+  "定义",
+).with(numbering: "1")
+
+#let lemma = envbox(
+  "lemma",
+  "引理",
+).with(numbering: "1")
+
+#let corollary = envbox(
+  "corollary",
+  "推论",
+).with(numbering: "1")
+
+#let assumption = envbox(
+  "assumption",
+  "假设",
+).with(numbering: "1")
+
+#let conjecture = envbox(
+  "conjecture",
+  "猜想",
+).with(numbering: "1")
+
+#let axiom = envbox(
+  "axiom",
+  "公理",
+).with(numbering: "1")
+
+#let principle = envbox(
+  "principle",
+  "定律",
+).with(numbering: "1")
+
+#let problem = envbox(
+  "problem",
+  "问题",
+).with(numbering: "1")
+
+#let example = envbox(
+  "example",
+  "例",
+).with(numbering: "1")
+
+#let proof = envbox(
+  "proof",
+  "证明",
+).with(numbering: "1")
+
+#let solution = envbox(
+  "solution",
+  "解",
+).with(numbering: "1")
