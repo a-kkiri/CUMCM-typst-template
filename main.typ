@@ -25,7 +25,6 @@
       [main.typ 主文件],
       [template.typ 文档格式控制，包括一些基础的设置、函数],
       [refs.bib 参考文献],
-      [content 正文文件夹，存放正文章节],
       [fonts 字体文件夹],
       [figures 图片文件夹]
     )\ #v(-16pt)
@@ -56,7 +55,6 @@
   date: datetime(year: 2023, month: 9, day: 8), // 日期
 
   cover_display: true, // 是否显示封面与编号页
-  ref_color: true, // 引用和链接是否彩色
 
   abstract: [
     此处填写摘要内容
@@ -65,12 +63,15 @@
   keywords: ("关键字1", "关键字2", "关键字3"),
 )
 
-正文内容
+// 正文内容
 
-参考文献
+// 参考文献
+#bib("refs.bib")
 
-附录
-```, caption: "基本样式")
+// 附录
+#heading("附录A  XXXX", numbering: none) 
+
+```, caption: "基本样式") \
 
 根据要求，电子版论文提交时需去掉封面和编号页。可以将 `cover_display` 设置为 false 来实现，即:
 
@@ -88,7 +89,7 @@ cover_display: false, // 是否显示封面与编号页
 在数学建模中，我们经常需要插入图片。Typst 支持的图片格式有 "png", "jepg", ""gif"", "svg"，其他类型的图片无法插入文档。我们可以通过改变参数 `width` 来改变图片的大小，详见#link("https://typst.app/docs/reference/visualize/image/")[typst/docs/image]。下面是一些图片插入的示例：
 
 #figure(
-  image("./figures/f2.svg", width: 60%),
+  image("./figures/f2.svg", width: 70%),
   caption: [
     单图示例
   ],
@@ -97,7 +98,7 @@ cover_display: false, // 是否显示封面与编号页
 #figure(
   grid(
     columns: 2,
-    gutter: 4pt,
+    gutter: 2pt,
     image("./figures/f1.png"), image("./figures/f1.png"),
     text("（a）venn 图", size: 10pt), text("（b）venn 图", size: 10pt)
   ),
@@ -131,6 +132,8 @@ cover_display: false, // 是否显示封面与编号页
     [Frog], [Animal], [6 $"cm"^3$],
     [Frog], [Animal], [6 $"cm"^3$],
     [Frog], [Animal], [6 $"cm"^3$],
+    [Frog], [Animal], [6 $"cm"^3$],
+    [Frog], [Animal], [6 $"cm"^3$],
     hlinex(),
   ), 
   caption: "表格示例"
@@ -157,6 +160,8 @@ cover_display: false, // 是否显示封面与编号页
     /* -------------- */
     
     [Machine], [Steel], [5 $"cm"^3$],
+    [Frog], [Animal], [6 $"cm"^3$],
+    [Frog], [Animal], [6 $"cm"^3$],
     [Frog], [Animal], [6 $"cm"^3$],
     [Frog], [Animal], [6 $"cm"^3$],
     [Frog], [Animal], [6 $"cm"^3$],
@@ -221,8 +226,6 @@ $ f\(x\)= cases(
 
 == 脚注
 
-=== 测试
-
 利用 `#footnote(脚注内容)`可以生产脚注 #footnote("脚注例")
 
 == 无序列表与有序列表
@@ -254,6 +257,8 @@ $ f\(x\)= cases(
 参考文献对于一篇正式的论文来说是必不可的，在建模中重要的参考文献当然应该列出。Typst 支持使用 BibTeX 来管理参考文献。在 `refs.bib` 文件中添加参考文献的信息，然后在正文中使用 `#cite(<引用的文献的 key>)` 来引用文献。例如：#cite(<netwok2020>)。最后通过 `#bib("refs.bib")` 来生成参考文献列表。
 
 #bib("refs.bib")
+
+#pagebreak()
 
 #heading("附录A  线性规划 - Python 源程序", numbering: none)
 
