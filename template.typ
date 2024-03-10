@@ -44,10 +44,10 @@
   parbreak()
   v(15pt)
 
-  let fieldvalue(value) = [
+  let fieldvalue(value, height: 10pt) = [
     #set align(center + horizon)
     #grid(
-      rows: (auto, auto),
+      rows: (height, auto),
       row-gutter: 0.2em,
       value,
       line(length: 100%, stroke: 0.6pt)
@@ -59,38 +59,38 @@
       columns: (315pt, auto),
       text[#h(2em)我们参赛选择的题号（从A/B/C/D/E中选择一项填写）：],
       fieldvalue(problem_chosen),
-    )#v(-2pt)
+    )#v(-4pt)
     #grid(
       columns: (285pt, auto),
       text[#h(2em)我们的报名参赛队号（12位数字全国统一编号）：],
       fieldvalue(team_number)
-    )#v(-2pt)
+    )#v(-4pt)
     #grid(
       columns: (255pt, auto),
       text[#h(2em)参赛学校（完整的学校全称，不含院系名）：],
       fieldvalue(college_name)
     )
-    #v(10pt)
+    #v(8pt)
     #grid(
       columns: (172pt, auto),
-      row-gutter: 2em,
+      row-gutter: 22pt,
       text[#h(2em)参赛队员 (打印并签名) ：1.],
       fieldvalue(member.A),
-      text[#h(1fr)2.#h(0.6em)],
+      text[#h(1fr)2.#h(0.4em)],
       fieldvalue(member.B),
-      text[#h(1fr)3.#h(0.6em)],
+      text[#h(1fr)3.#h(0.4em)],
       fieldvalue(member.C),
     )
     #v(8pt)
     #grid(
-      columns: (272pt, auto),
-      text[#h(2em)指导教师或指导教师组负责人#h(10pt) (打印并签名)：],
+      columns: (260pt, auto),
+      text[#h(2em)指导教师或指导教师组负责人 (打印并签名)：],
       fieldvalue(advisor)
     )
 
     #text(font: kaiti)[#h(2em)（指导教师签名意味着对参赛队的行为和论文的真实性负责） ]
 
-    #v(8pt)
+    #v(7pt)
     #align(right)[#grid(
       columns: (auto, 55pt, auto, 25pt, auto, 25pt, auto),
       column-gutter: 2pt,
@@ -104,7 +104,7 @@
     )]
   ]
 
-  v(8pt)
+  v(6pt)
   text(font: kaiti, stroke: 0.35pt)[（请勿改动此页内容和格式。此承诺书打印签名后作为纸质论文的封面，注意电子版论文中不得出现此页。以上内容请仔细核对，如填写错误，论文可能被取消评奖资格。）]
 
   pagebreak()
@@ -116,9 +116,9 @@
       columns: (100pt, 115pt, 115pt, 115pt),
       column-gutter: 2pt,
       text(size: 14pt)[赛区评阅编号：\ （由赛区填写）],
-      fieldvalue(v(30pt)),
+      fieldvalue(v(30pt), height: 30pt),
       text(size: 14pt)[全国评阅编号：\ （全国组委会填写）],
-      fieldvalue(v(30pt)),
+      fieldvalue(v(30pt), height: 30pt),
     )
     #v(10pt)
     #line(length: 100%, stroke: (thickness: 1.5pt, dash: "solid"))
