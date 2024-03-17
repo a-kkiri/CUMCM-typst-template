@@ -1,7 +1,4 @@
-#import "@preview/codelst:2.0.0": sourcecode, codelst
-#import "@preview/tablex:0.0.8": tablex, hlinex, vlinex, colspanx, rowspanx
 #import "@preview/ctheorems:1.1.2": *
-//#import "@preview/mitex:0.2.1": *
 
 // 文本和代码的字体
 #let songti = "SimSun"
@@ -157,7 +154,7 @@
 
 
 
-#let project(
+#let cumcm(
   title: "全国大学生数学建模竞赛 Typst 模板",
   problem_chosen: "A",
   team_number: "1234",
@@ -179,8 +176,10 @@
 
   // 设置正文和代码的字体
   set text(font: (text_font, songti), size: 12pt, lang: "zh", region: "cn")
-  show strong: set text(font: (text_font, heiti))
-  show emph: set text(font: text_font)
+  show strong: it => {
+    show regex("[\p{hani}\s]+"): set text(stroke: 0.3pt)
+    it
+  }
   show raw: set text(font: code_font, 8pt)
 
   // 设置文档元数据和参考文献格式
@@ -224,8 +223,6 @@
   show raw.where(block: false): it => box(fill: luma(240), inset: (x: 2pt), outset: (y: 3pt), radius: 1pt)[#text(size: 10pt)[#it]]
 
   show raw.where(block: true): it => block(width: 100%, fill: luma(240), inset: 10pt, radius: 3pt, stroke: 0.1pt, breakable: true)[#it]
-
-  show: codelst(reversed: true)
 
   show figure: it => [
     #v(4pt)
@@ -282,15 +279,16 @@
 
   // 摘要
   align(center)[
-    #text(size: 16pt)[*全国大学生数学建模竞赛 Typst 模板* \ ] #v(2pt)
-    #text(size: 14pt)[*摘 要*]
+    #set text(font: (text_font, heiti))
+    #text(size: 16pt)[全国大学生数学建模竞赛 *Typst* 模板 \ ] #v(2pt)
+    #text(size: 14pt)[摘 要]
   ]
 
   abstract
 
   if keywords != () [
     #v(5pt)
-    #h(-2em)#text("关键字：", font: heiti, stroke: 0.25pt)
+    #h(-2em)#text("关键字：", font: heiti)
     #keywords.join(h(1em))
   ]
 
@@ -302,7 +300,8 @@
 #let bib(bibliography_file) = {
     parbreak()
     show bibliography: set text(10.5pt)
-    bibliography(bibliography_file, title: "参考文献", style: "gb-7714-2015-numeric")
+    set bibliography(title: "参考文献", style: "gb-7714-2015-numeric")
+    bibliography_file
     v(12pt)
 }
 

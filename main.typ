@@ -1,7 +1,7 @@
 #import "template.typ": *
 #show: thmrules
 
-#show: project.with(
+#show: cumcm.with(
   title: "全国大学生数学建模竞赛 Typst 模板",
   problem_chosen: "A",
   team_number: "1234",
@@ -17,7 +17,7 @@
   cover_display: true,
 
   abstract: [
-    #link("https://github.com/a-kkiri/CUMCM-typst-template")[本文档]是为全国大学生数学建模竞赛编写的 Typst 模板，旨在让大家专注于论文的内容写作,，而不用花费过多精力在格式的定制和调整上。本文档默认页边距为2.5cm，正文中文字体为中易宋体（SimSun），英文字体为 Times New Romans，字号为12pt（小四）。
+    #link("https://github.com/a-kkiri/CUMCM-typst-template")[本文档]是为全国大学生数学建模竞赛编写的 Typst 模板，旨在让大家专注于论文的内容写作,，而不用花费过多精力在格式的定制和调整上。本文档默认页边距为2.5cm，正文中文字体为中易宋体（SimSun），英文字体为 Times New Romans，字号为12pt（小四），字体文件请到#link("https://github.com/a-kkiri/CUMCM-typst-template/blob/main/fonts.zip?raw=true")[CUMCM-typst-template/fonts.zip] 获取。
 
     本模板文件由主要以下六部分组成：
 
@@ -29,7 +29,6 @@
       [figures 图片文件夹]
     )\ #v(-16pt)
   ],
-
   keywords: ("Typst", "模板", "数学建模"),
 )
 
@@ -109,70 +108,81 @@ cover_display: false, // 是否显示封面与编号页
 
 = 表格
 
-本模板创建表格引入了 tablex 包，可以方便地创建表格。其标准格式及其代码说明如下：
+数学建模中表格有助于数据的整理与展示。Typst 支持使用 `table` 来插入表格，详见 #link("https://typst.app/docs/reference/model/table/")[typst/docs/table]。下面是一些表格插入的示例：
 
 #figure(
-  kind: table,
-  tablex(
-    columns: 3,
-    align: center + horizon,
-    auto-hlines: false,
-    auto-vlines: false,
-    repeat-header: true,
-
-    /* --- header --- */
-    hlinex(),
-    rowspanx(2)[*Names*], colspanx(2)[*Properties*], (),
-    hlinex(start: 1, end: 3, stroke: 0.5pt),
-    (),                 [*Type*], [*Size*],
-    hlinex(stroke: 0.2pt),
-    /* -------------- */
-
-    [Machine], [Steel], [5 $"cm"^3$],
-    [Frog], [Animal], [6 $"cm"^3$],
-    [Frog], [Animal], [6 $"cm"^3$],
-    [Frog], [Animal], [6 $"cm"^3$],
-    [Frog], [Animal], [6 $"cm"^3$],
-    [Frog], [Animal], [6 $"cm"^3$],
-    hlinex(),
-  ), 
+  table(
+    columns: (auto, auto, auto),
+    inset: 10pt,
+    align: horizon,
+    table.header(
+      [], [*Area*], [*Parameters*],
+    ),
+    [*Cylinder*],
+    [$pi h (D^2 - d^2) / 4$],
+    [
+      $h$: height \
+      $D$: outer radius \
+      $d$: inner radius
+    ],
+    [*Tetrahedron*],
+    [$sqrt(2) / 12 a^3$],
+    [$a$: edge length]
+  ),
   caption: "表格示例"
+)
+
+#figure(
+  table(
+    columns: 4,
+    align: center + horizon,
+    stroke: none,
+    table.hline(),
+    table.header(
+      table.cell(rowspan: 2, [*Names*]), 
+      table.cell(colspan: 2,[*Properties*],),
+      table.hline(stroke: 0.6pt),
+      table.cell(rowspan: 2, [*Creators*]),
+      [*Type*], [*Size*],
+      
+    ),
+    table.hline(stroke: 0.4pt),
+    [Machine], [Steel], [5 $"cm"^3$], [John p& Kate],
+    [Frog], [Animal], [6 $"cm"^3$], [Robert],
+    [Frog], [Animal], [6 $"cm"^3$], [Robert],
+    table.hline()
+  ),
+  caption: "三线表示例"
 )
 
 #figure(
   ```typ
 #figure(
-  kind: table, // 设置figure的类型为table ⚠️
-  tablex(
-    columns: 3, // 列数
-    align: center + horizon, // 对齐方式
-    auto-hlines: false, // 是否自动添加横线
-    auto-vlines: false, // 是否自动添加竖线
-    repeat-header: true, // 是否重复表头
-
-    /* --- header --- */
-    hlinex(), // 添加横线
-    rowspanx(2)[Names], colspanx(2)[Properties], ()
-    // rowspanx(2) 表示跨两行， colspanx(2) 表示跨两列
-    hlinex(start: 1, end: 3, stroke: 0.2pt),
-    (),                 [Type], [Size],
-    hlinex(stroke: 0.2pt),
-    /* -------------- */
-    
-    [Machine], [Steel], [5 $"cm"^3$],
-    [Frog], [Animal], [6 $"cm"^3$],
-    [Frog], [Animal], [6 $"cm"^3$],
-    [Frog], [Animal], [6 $"cm"^3$],
-    [Frog], [Animal], [6 $"cm"^3$],
-    [Frog], [Animal], [6 $"cm"^3$],
-    hlinex(),
-  ), 
+  table(
+    columns: 4,
+    align: center + horizon,
+    stroke: none,
+    table.hline(),
+    table.header(
+      table.cell(rowspan: 2, [*Names*]), 
+      table.cell(colspan: 2,[*Properties*],),
+      table.hline(stroke: 0.6pt),
+      table.cell(rowspan: 2, [*Creators*]),
+      [*Type*], [*Size*],
+      
+    ),
+    table.hline(stroke: 0.4pt),
+    [Machine], [Steel], [5 $"cm"^3$], [John p& Kate],
+    [Frog], [Animal], [6 $"cm"^3$], [Robert],
+    [Frog], [Animal], [6 $"cm"^3$], [Robert],
+    table.hline()
+  ),
   caption: "表格示例"
 )
   ```
 )
 
-更多使用方法可以查看 #link("https://github.com/typst/packages/tree/main/packages/preview/tablex/0.0.8")[GitHub 页面]。
+更多使用方法可以查看 #link("https://typst.app/docs/reference/model/table/")[typst/docs/table]。
 
 = 公式
 
@@ -203,7 +213,9 @@ $ f\(x\)= cases(
 
 如果公式中有个别需要加粗的字母，可以使用 `bold()` 进行加粗。如，$alpha a bold(alpha a)$。
 
-以上仅为一些简单的公式示例，更多的公式使用方法可以查看 #link("https://typst.app/docs/reference/math/")[typst/docs/math]。
+以上仅为一些简单的公式示例，更多的公式使用方法可以查看 #link("https://typst.app/docs/reference/math/")[typst/docs/math]
+
+另外，如果需要插入 LaTeX 公式可以使用外部包 #link("https://typst.app/universe/package/mitex")[mitex]。
 
 = 定理环境
 
@@ -220,7 +232,6 @@ $ f\(x\)= cases(
 #example[这是一个例子]
 #proof[这是一个证明]
 #solution[这是一个解]
-
 
 = 其他功能
 
@@ -256,7 +267,7 @@ $ f\(x\)= cases(
 
 参考文献对于一篇正式的论文来说是必不可的，在建模中重要的参考文献当然应该列出。Typst 支持使用 BibTeX 来管理参考文献。在 `refs.bib` 文件中添加参考文献的信息，然后在正文中使用 `#cite(<引用的文献的 key>)` 来引用文献。例如：#cite(<netwok2020>)。最后通过 `#bib("refs.bib")` 来生成参考文献列表。
 
-#bib("refs.bib")
+#bib(bibliography("refs.bib"))
 
 #pagebreak()
 
