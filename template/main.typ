@@ -1,11 +1,11 @@
-#import "template.typ": *
+#import "@preview/cumcm-muban:0.1.0": *
 #show: thmrules
 
 #show: cumcm.with(
   title: "全国大学生数学建模竞赛 Typst 模板",
-  problem_chosen: "A",
-  team_number: "1234",
-  college_name: " ",
+  problem-chosen: "A",
+  team-number: "1234",
+  college-name: " ",
   member: (
     A: " ",
     B: " ",
@@ -14,10 +14,10 @@
   advisor: " ",
   date: datetime(year: 2023, month: 9, day: 8),
 
-  cover_display: true,
+  cover-display: true,
 
   abstract: [
-    #link("https://github.com/a-kkiri/CUMCM-typst-template")[本文档]是为全国大学生数学建模竞赛编写的 Typst 模板，旨在让大家专注于论文的内容写作,，而不用花费过多精力在格式的定制和调整上。本文档默认页边距为2.5cm，正文中文字体为中易宋体（SimSun），英文字体为 Times New Romans，字号为12pt（小四），字体文件请到#link("https://github.com/a-kkiri/CUMCM-typst-template/blob/main/fonts.zip?raw=true")[CUMCM-typst-template/fonts.zip] 获取。
+    #link("https://github.com/a-kkiri/CUMCM-typst-template")[本文档]是为全国大学生数学建模竞赛编写的 Typst 模板，旨在让大家专注于论文的内容写作,，而不用花费过多精力在格式的定制和调整上。本文档默认页边距为2.5cm，正文中文字体为中易宋体（SimSun），英文字体为 Times New Romans，字号为12pt（小四），字体文件请到 #link("https://github.com/a-kkiri/CUMCM-typst-template/blob/main/fonts.zip?raw=true")[CUMCM-typst-template/fonts.zip] 获取。
 
     本模板文件由主要以下六部分组成：
 
@@ -37,23 +37,23 @@
 使用本模板之前，请阅读模板的使用说明文档。下面是本模板使用的基本样式：
 
 #figure(```typ
-#import "template.typ": *
+#import "@preview/cumcm-muban:0.1.0": *
+#show: thmrules
 
-
-#show: project.with(
-  title: "论文题目",
-  problem_chosen: "A", // 选择的题号
-  team_number: "1234", // 队伍编号
-  college_name: "学校名称",
+#show: cumcm.with(
+  title: "论文的标题",
+  problem-chosen: "A", // 选择的题目
+  team-number: "1234", // 团队的编号
+  college-name: "高校的名称",
   member: (
     A: "成员A",
     B: "成员B",
     C: "成员C",
   ),
-  advisor: " ", // 指导老师
+  advisor: " ", // 指导教师
   date: datetime(year: 2023, month: 9, day: 8), // 日期
 
-  cover_display: true, // 是否显示封面与编号页
+  cover-display: true, // 是否显示封面以及编号页
 
   abstract: [
     此处填写摘要内容
@@ -72,10 +72,10 @@
 
 ```, caption: "基本样式") \
 
-根据要求，电子版论文提交时需去掉封面和编号页。可以将 `cover_display` 设置为 false 来实现，即:
+根据要求，电子版论文提交时需去掉封面和编号页。可以将 `cover-display` 设置为 false 来实现，即:
 
 ```typ
-cover_display: false, // 是否显示封面与编号页
+cover-display: false, // 是否显示封面与编号页
 ```
 这样就能实现了。
 

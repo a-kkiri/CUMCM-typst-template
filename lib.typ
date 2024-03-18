@@ -4,14 +4,14 @@
 #let songti = "SimSun"
 #let heiti = "SimHei"
 #let kaiti = "SimKai"
-#let text_font = "Times New Roman"
-#let code_font = "DejaVu Sans Mono"
+#let text-font = "Times New Roman"
+#let code-font = "DejaVu Sans Mono"
 
 #let cover(
   title: "全国大学生数学建模竞赛 Typst 模板",
-  problem_chosen: "A",
-  team_number: "1234",
-  college_name: " ",
+  problem-chosen: "A",
+  team-number: "1234",
+  college-name: " ",
   member: (
     A: " ",
     B: " ",
@@ -34,7 +34,7 @@
     #v(8pt)
   ]
 
-  show strong: set text(font: (text_font, songti), stroke: 0.4pt, size: 12pt)
+  show strong: set text(font: (text-font, songti), stroke: 0.4pt, size: 12pt)
   
   par(leading: 13pt)[我们仔细阅读了《全国大学生数学建模竞赛章程》和《全国大学生数学建模竞赛参赛规则》（以下简称 “竞赛章程和参赛规则”，可从http://www.mcm.edu.cn下载）。\ #v(-1pt) 我们完全清楚，在竞赛开始后参赛队员不能以任何方式，包括电话、电子邮件、“贴吧”、QQ群、微信群等，与队外的任何人（包括指导教师）交流、讨论与赛题有关的问题；无论主动参与讨论还是被动接收讨论信息都是严重违反竞赛纪律的行为。\ #v(-1pt) *我们以中国大学生名誉和诚信郑重承诺，严格遵守竞赛章程和参赛规则，以保证竞赛的公正、公平性。如有违反竞赛章程和参赛规则的行为，我们将受到严肃处理。* \ #v(-1pt) 我们授权全国大学生数学建模竞赛组委会，可将我们的论文以任何形式进行公开展示（包括进行网上公示，在书籍、期刊和其他媒体进行正式或非正式发表等）。]
 
@@ -55,17 +55,17 @@
     #grid(
       columns: (315pt, auto),
       text[#h(2em)我们参赛选择的题号（从A/B/C/D/E中选择一项填写）：],
-      fieldvalue(problem_chosen),
+      fieldvalue(problem-chosen),
     )#v(-4pt)
     #grid(
       columns: (285pt, auto),
       text[#h(2em)我们的报名参赛队号（12位数字全国统一编号）：],
-      fieldvalue(team_number)
+      fieldvalue(team-number)
     )#v(-4pt)
     #grid(
       columns: (255pt, auto),
       text[#h(2em)参赛学校（完整的学校全称，不含院系名）：],
-      fieldvalue(college_name)
+      fieldvalue(college-name)
     )
     #v(8pt)
     #grid(
@@ -156,9 +156,9 @@
 
 #let cumcm(
   title: "全国大学生数学建模竞赛 Typst 模板",
-  problem_chosen: "A",
-  team_number: "1234",
-  college_name: " ",
+  problem-chosen: "A",
+  team-number: "1234",
+  college-name: " ",
   member: (
     first: " ",
     second: " ",
@@ -166,7 +166,7 @@
   ),
   advisor: " ",
   date: none,
-  cover_display: false,
+  cover-display: false,
 
   abstract: [],
   keywords: (),
@@ -175,12 +175,12 @@
 ) = {
 
   // 设置正文和代码的字体
-  set text(font: (text_font, songti), size: 12pt, lang: "zh", region: "cn")
+  set text(font: (text-font, songti), size: 12pt, lang: "zh", region: "cn")
   show strong: it => {
     show regex("[\p{hani}\s]+"): set text(stroke: 0.3pt)
     it
   }
-  show raw: set text(font: code_font, 8pt)
+  show raw: set text(font: code-font, 8pt)
 
   // 设置文档元数据和参考文献格式
   set document(title: title)
@@ -189,7 +189,7 @@
   set heading(numbering: "1.1 ")
 
   show heading: it => box(width: 100%)[
-    #set text(font: (text_font, heiti))
+    #set text(font: (text-font, heiti))
     #if it.numbering != none { counter(heading).display() }
     #it.body
     #v(8pt)
@@ -252,12 +252,12 @@
   show enum: set text(top-edge: "ascender")
 
   // 封面显示
-  if cover_display == true [
+  if cover-display == true [
     #show: cover.with(
       title: title,
-      problem_chosen: problem_chosen,
-      team_number: team_number,
-      college_name: college_name,
+      problem-chosen: problem-chosen,
+      team-number: team-number,
+      college-name: college-name,
       member: (
         A: member.A,
         B: member.B,
@@ -279,7 +279,7 @@
 
   // 摘要
   align(center)[
-    #set text(font: (text_font, heiti))
+    #set text(font: (text-font, heiti))
     #text(size: 16pt)[全国大学生数学建模竞赛 *Typst* 模板 \ ] #v(2pt)
     #text(size: 14pt)[摘 要]
   ]
@@ -297,11 +297,11 @@
   body
 }
 
-#let bib(bibliography_file) = {
+#let bib(bibliography-file) = {
     parbreak()
     show bibliography: set text(10.5pt)
     set bibliography(title: "参考文献", style: "gb-7714-2015-numeric")
-    bibliography_file
+    bibliography-file
     v(12pt)
 }
 
