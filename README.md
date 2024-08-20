@@ -5,14 +5,14 @@
     <br />全国大学生数学建模竞赛 Typst 模板
 </h1>
 
---------- 
-⚠️请使用 typst >= 0.11.0 的版本进行编译。
-
----------
-
 ## 模板介绍
 
 用于编写高教社杯全国大学生数学建模论文的 Typst 模板
+
+> [!IMPORTANT]
+>
+> 本模板的承诺书页及编号专用页仅供参考，实际论文提交推荐使用官方模板提供的承诺书页及编号专用页。
+
 
 ## 使用方法
 
@@ -30,11 +30,21 @@ Typst 将会创建一个新的目录，其中包含了所有你开始**除字体
 
 ## 模板预览
 
-|  [承诺书](https://github.com/a-kkiri/CUMCM-typst-template/blob/main/template/figures/p1.jpg) |  [编号页](https://github.com/a-kkiri/CUMCM-typst-template/blob/main/template/figures/p2.jpg)|  [正文](https://github.com/a-kkiri/CUMCM-typst-template/blob/main/template/figures/p4.jpg)|
+|  [正文1](https://github.com/a-kkiri/CUMCM-typst-template/blob/main/template/figures/p4.jpg) |  [正文2](https://github.com/a-kkiri/CUMCM-typst-template/blob/main/template/figures/p6.jpg)|  [附录](https://github.com/a-kkiri/CUMCM-typst-template/blob/main/template/figures/p10.jpg)|
 |:---:|:---:|:---:|
-| ![承诺书](https://github.com/a-kkiri/CUMCM-typst-template/blob/main/template/figures/p1.jpg?raw=true) | ![编号页](https://github.com/a-kkiri/CUMCM-typst-template/blob/main/template/figures/p2.jpg?raw=true)| ![正文](https://github.com/a-kkiri/CUMCM-typst-template/blob/main/template/figures/p4.jpg?raw=true)|
+| ![正文1](https://github.com/a-kkiri/CUMCM-typst-template/blob/main/template/figures/p4.jpg?raw=true) | ![正文2](https://github.com/a-kkiri/CUMCM-typst-template/blob/main/template/figures/p6.jpg?raw=true)| ![附录](https://github.com/a-kkiri/CUMCM-typst-template/blob/main/template/figures/p10.jpg?raw=true)|
 
-## ⚠️注意
- > 在 Typst 网页应用程序使用此模板不包含所需字体文件，请到 [CUMCM-typst-template/fonts.zip](https://github.com/a-kkiri/CUMCM-typst-template/blob/main/fonts.zip?raw=true) 下载并自行上传到网页应用程序。
+> [!IMPORTANT]
+>
+> 对于 WebAPP/Linux/MacOS 使用者此模板不包含所需字体文件，请到 [CUMCM-typst-template/fonts.zip](https://github.com/a-kkiri/CUMCM-typst-template/blob/main/fonts.zip?raw=true) 下载并自行上传到网页应用程序。
+>
+> 文档使用的中文字体仅包含约 7000 个通用汉字和符号，若某些字无法显示，请更换其他字体。
 
- > 文档使用的中文字体仅包含约 7000 个通用汉字和符号，若某些字无法显示，请更换其他字体。
+## 更改记录
+
+2024-08-20
+
+- 更改附录页代码框样式
+- 修复标题无法修改的问题
+- 增加函数 `appendix` 用于显示附录内容
+- 将粗体的 `stroke` 参数设置为 0.02857em

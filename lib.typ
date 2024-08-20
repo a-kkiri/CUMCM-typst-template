@@ -28,17 +28,30 @@
   v(-8pt)
   align(left)[#line(length: 96%, stroke: (thickness: 0.8pt, dash: "solid"))]
 
+  show strong: it => {
+    show regex("[\p{hani}\s]+"): set text(stroke: 0.02857em)
+    it
+  }
+
   align(center)[
-    #text(size: 15pt, font: heiti, stroke: 0.35pt)[2023年高教社杯全国大学生数学建模竞赛] \ \
-    #text(size: 16pt, font: songti, stroke: 0.4pt)[承#h(16pt)诺#h(16pt)书]
+    #text(size: 15pt, font: heiti, stroke: 0.02857em)[#date.display("[year]")年高教社杯全国大学生数学建模竞赛] \ \
+    #text(size: 16pt, font: songti)[*承 诺 书*]
     #v(8pt)
   ]
 
-  show strong: set text(font: (text-font, songti), stroke: 0.4pt, size: 12pt)
+  [
+    #set par(leading: 13pt)
+    #show par: set block(spacing: 13pt)
   
-  par(leading: 13pt)[我们仔细阅读了《全国大学生数学建模竞赛章程》和《全国大学生数学建模竞赛参赛规则》（以下简称 “竞赛章程和参赛规则”，可从http://www.mcm.edu.cn下载）。\ #v(-1pt) 我们完全清楚，在竞赛开始后参赛队员不能以任何方式，包括电话、电子邮件、“贴吧”、QQ群、微信群等，与队外的任何人（包括指导教师）交流、讨论与赛题有关的问题；无论主动参与讨论还是被动接收讨论信息都是严重违反竞赛纪律的行为。\ #v(-1pt) *我们以中国大学生名誉和诚信郑重承诺，严格遵守竞赛章程和参赛规则，以保证竞赛的公正、公平性。如有违反竞赛章程和参赛规则的行为，我们将受到严肃处理。* \ #v(-1pt) 我们授权全国大学生数学建模竞赛组委会，可将我们的论文以任何形式进行公开展示（包括进行网上公示，在书籍、期刊和其他媒体进行正式或非正式发表等）。]
+    #par[我们仔细阅读了《全国大学生数学建模竞赛章程》和《全国大学生数学建模竞赛参赛规则》（以下简称 “竞赛章程和参赛规则”，可从http://www.mcm.edu.cn下载）。] 
+  
+    #par[我们完全清楚，在竞赛开始后参赛队员不能以任何方式，包括电话、电子邮件、“贴吧”、QQ群、微信群等，与队外的任何人（包括指导教师）交流、讨论与赛题有关的问题；无论主动参与讨论还是被动接收讨论信息都是严重违反竞赛纪律的行为。] 
 
-  parbreak()
+    #par[*我们以中国大学生名誉和诚信郑重承诺，严格遵守竞赛章程和参赛规则，以保证竞赛的公正、公平性。如有违反竞赛章程和参赛规则的行为，我们将受到严肃处理。* ]
+  
+    #par[我们授权全国大学生数学建模竞赛组委会，可将我们的论文以任何形式进行公开展示（包括进行网上公示，在书籍、期刊和其他媒体进行正式或非正式发表等）。]
+  ]
+  
   v(15pt)
 
   let fieldvalue(value, height: 10pt) = [
@@ -69,9 +82,9 @@
     )
     #v(8pt)
     #grid(
-      columns: (172pt, auto),
+      columns: (175pt, auto),
       row-gutter: 22pt,
-      text[#h(2em)参赛队员 (打印并签名) ：1.],
+      text[#h(2em)参赛队员 (打印并签名) ：1.#h(0.4em)],
       fieldvalue(member.A),
       text[#h(1fr)2.#h(0.4em)],
       fieldvalue(member.B),
@@ -80,14 +93,14 @@
     )
     #v(8pt)
     #grid(
-      columns: (260pt, auto),
+      columns: (270pt, auto),
       text[#h(2em)指导教师或指导教师组负责人 (打印并签名)：],
       fieldvalue(advisor)
     )
 
     #text(font: kaiti)[#h(2em)（指导教师签名意味着对参赛队的行为和论文的真实性负责） ]
 
-    #v(7pt)
+    #v(8pt)
     #align(right)[#grid(
       columns: (auto, 55pt, auto, 25pt, auto, 25pt, auto),
       column-gutter: 2pt,
@@ -101,8 +114,8 @@
     )]
   ]
 
-  v(6pt)
-  text(font: kaiti, stroke: 0.35pt)[（请勿改动此页内容和格式。此承诺书打印签名后作为纸质论文的封面，注意电子版论文中不得出现此页。以上内容请仔细核对，如填写错误，论文可能被取消评奖资格。）]
+  v(8pt)
+  text(font: kaiti)[*（请勿改动此页内容和格式。此承诺书打印签名后作为纸质论文的封面，注意电子版论文中不得出现此页。以上内容请仔细核对，如填写错误，论文可能被取消评奖资格。）*]
 
   pagebreak()
 
@@ -122,9 +135,9 @@
   ]
   v(4pt)
   align(center)[
-    #text(size: 15pt, font: heiti, stroke: 0.35pt)[2023年高教社杯全国大学生数学建模竞赛]
+    #text(size: 15pt, font: heiti, stroke: 0.02857em)[#date.display("[year]")年高教社杯全国大学生数学建模竞赛]
     #v(6pt)
-    #text(size: 16pt, font: songti, stroke: 0.4pt)[编 号 专 用 页]
+    #text(size: 16pt, font: songti)[*编 号 专 用 页*]
   ]
 
   block(width: 100%)[
@@ -147,7 +160,7 @@
   ]
 
   v(138pt)
-  text(font: kaiti, stroke: 0.35pt)[（请勿改动此页内容和格式。此编号专用页仅供赛区和全国评阅使用，参赛队打印后装订到纸质论文的第二页上。注意电子版论文中不得出现此页。）]
+  text(font: kaiti)[*（请勿改动此页内容和格式。此编号专用页仅供赛区和全国评阅使用，参赛队打印后装订到纸质论文的第二页上。注意电子版论文中不得出现此页。）*]
 
   body
 }
@@ -177,7 +190,7 @@
   // 设置正文和代码的字体
   set text(font: (text-font, songti), size: 12pt, lang: "zh", region: "cn")
   show strong: it => {
-    show regex("[\p{hani}\s]+"): set text(stroke: 0.3pt)
+    show regex("[\p{hani}\s]+"): set text(stroke: 0.02857em)
     it
   }
   show raw: set text(font: code-font, 8pt)
@@ -199,8 +212,8 @@
     level: 1
   ): it => box(width: 100%)[
     #set text(size: 15pt)
-    #set heading(numbering: "一、")
     #set align(center)
+    #set heading(numbering: "一、")
     #v(4pt)
     #it
   ]
@@ -212,17 +225,16 @@
     #it
   ]
 
-  // 配置公式的编号和间距
+  // 配置公式的编号、间距和字体
   set math.equation(numbering: "(1.1)")
   show math.equation: eq => {
     set block(spacing: 0.65em)
     eq
   }
-
-  // 配置行内代码块、行间代码块
-  show raw.where(block: false): it => box(fill: luma(240), inset: (x: 2pt), outset: (y: 3pt), radius: 1pt)[#text(size: 10pt)[#it]]
-
-  show raw.where(block: true): it => block(width: 100%, fill: luma(240), inset: 10pt, radius: 3pt, stroke: 0.1pt, breakable: true)[#it]
+  show math.equation: it => {
+    show regex("[\p{hani}\s]+"): set text(font: songti)
+    it
+  }
 
   show figure: it => [
     #v(4pt)
@@ -280,7 +292,7 @@
   // 摘要
   align(center)[
     #set text(font: (text-font, heiti))
-    #text(size: 16pt)[全国大学生数学建模竞赛 *Typst* 模板 \ ] #v(2pt)
+    #text(size: 16pt)[#title] #v(2pt)
     #text(size: 14pt)[摘 要]
   ]
 
@@ -293,16 +305,29 @@
   ]
 
   pagebreak()
-
+  
   body
 }
 
 #let bib(bibliography-file) = {
-    parbreak()
-    show bibliography: set text(10.5pt)
-    set bibliography(title: "参考文献", style: "gb-7714-2015-numeric")
-    bibliography-file
-    v(12pt)
+  show bibliography: set text(10.5pt)
+  set bibliography(title: "参考文献", style: "gb-7714-2015-numeric")
+  bibliography-file
+  v(12pt)
+}
+
+#let appendix-num = counter("appendix")
+
+#let appendix(title, body) = {
+  appendix-num.step()
+  table(
+    fill: (_, row) => if row == 0 or row == 1 {luma(200)} else {none},
+    rows: 3,
+    columns: 1fr,
+    text[*附录 #appendix-num.display()：*],
+    text[*#title*],
+    body
+  )
 }
 
 // 定理环境

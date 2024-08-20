@@ -1,4 +1,4 @@
-#import "@preview/cumcm-muban:0.1.0": *
+#import "../lib.typ": *
 #show: thmrules
 
 #show: cumcm.with(
@@ -12,12 +12,12 @@
     C: " ",
   ),
   advisor: " ",
-  date: datetime(year: 2023, month: 9, day: 8),
+  date: datetime(year: 2024, month: 9, day: 8),
 
   cover-display: true,
 
   abstract: [
-    #link("https://github.com/a-kkiri/CUMCM-typst-template")[本文档]是为全国大学生数学建模竞赛编写的 Typst 模板，旨在让大家专注于论文的内容写作,，而不用花费过多精力在格式的定制和调整上。本文档默认页边距为2.5cm，正文中文字体为中易宋体（SimSun），英文字体为 Times New Romans，字号为12pt（小四），字体文件请到 #link("https://github.com/a-kkiri/CUMCM-typst-template/blob/main/fonts.zip?raw=true")[CUMCM-typst-template/fonts.zip] 获取。
+    #link("https://github.com/a-kkiri/CUMCM-typst-template")[本文档]是为全国大学生数学建模竞赛编写的 Typst 模板，旨在让大家专注于论文的内容写作,，而不用花费过多精力在格式的定制和调整上。本文档默认页边距为2.5cm，本模板使用的字体如下：中易宋体（SimSun），中易黑体（SimHei），中易楷体（SimKai），Times New Romans，字号为12pt（小四），Windows 系统自带这些字体，但是对于 WebAPP/Linux/MacOS 使用者请到仓库自行获取这些字体。
 
     本模板文件由主要以下六部分组成：
 
@@ -36,7 +36,10 @@
 
 使用本模板之前，请阅读模板的使用说明文档。下面是本模板使用的基本样式：
 
-#figure(```typ
+#figure(
+  block(inset: 8pt, stroke: 0.5pt, radius: 3pt)[
+
+```typ
 #import "@preview/cumcm-muban:0.1.0": *
 #show: thmrules
 
@@ -65,18 +68,19 @@
 // 正文内容
 
 // 参考文献
-#bib("refs.bib")
+#bib(bibliography("refs.bib"))
 
 // 附录
-#heading("附录A  XXXX", numbering: none) 
+= 附录 A
 
-```, caption: "基本样式") \
+```], caption: "基本样式") \
 
 根据要求，电子版论文提交时需去掉封面和编号页。可以将 `cover-display` 设置为 false 来实现，即:
 
-```typ
+#block(inset: 8pt, stroke: 0.5pt, radius: 3pt, width: 100%)[```typ
 cover-display: false, // 是否显示封面与编号页
-```
+```]
+
 这样就能实现了。
 
 请确保你的论文内容符合要求，包括但不限于页数、格式、内容等。
@@ -156,7 +160,9 @@ cover-display: false, // 是否显示封面与编号页
 )
 
 #figure(
-  ```typ
+
+  block(inset: 8pt, stroke: 0.5pt, radius: 3pt)[
+```typ
 #figure(
   table(
     columns: 4,
@@ -179,7 +185,7 @@ cover-display: false, // 是否显示封面与编号页
   ),
   caption: "表格示例"
 )
-  ```
+```]
 )
 
 更多使用方法可以查看 #link("https://typst.app/docs/reference/model/table/")[typst/docs/table]。
@@ -265,13 +271,13 @@ $ f\(x\)= cases(
 
 = 参考文献与引用
 
-参考文献对于一篇正式的论文来说是必不可的，在建模中重要的参考文献当然应该列出。Typst 支持使用 BibTeX 来管理参考文献。在 `refs.bib` 文件中添加参考文献的信息，然后在正文中使用 `#cite(<引用的文献的 key>)` 来引用文献。例如：#cite(<netwok2020>)。最后通过 `#bib("refs.bib")` 来生成参考文献列表。
+参考文献对于一篇正式的论文来说是必不可的，在建模中重要的参考文献当然应该列出。Typst 支持使用 BibTeX 来管理参考文献。在 `refs.bib` 文件中添加参考文献的信息，然后在正文中使用 `#cite(<引用的文献的 key>)` 来引用文献。例如：#cite(<netwok2020>)。最后通过 `#bib(bibliography("refs.bib"))` 来生成参考文献列表。
 
 #bib(bibliography("refs.bib"))
 
 #pagebreak()
 
-#heading("附录A  线性规划 - Python 源程序", numbering: none)
+#appendix("线性规划 - Python 源程序",
 
 ```py
 import numpy as np
@@ -284,9 +290,9 @@ b_up = np.array([-8, -6])
 r = linprog(c, A_ub=A_up, b_ub=b_up, bounds=((0, None), (0, None), (0, None)))
 
 print(r)
-```
+```)
 
-#heading("附录B  非线性规划 - Python 源程序", numbering: none)
+#appendix("非线性规划 - Python 源程序",
 
 ```py
 from scipy import optimize as opt
@@ -328,4 +334,4 @@ print('目标值: ' + str(objective(x)))
 print('答案为')
 print('x1 = ' + str(x[0]))
 print('x2 = ' + str(x[1]))
-```
+```)
